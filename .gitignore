@@ -21,3 +21,7 @@ lerna-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+# Artefak sesi chat
+freebuff-chat*.md
+freebuff-chat*.zip

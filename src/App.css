@@ -280,3 +280,345 @@
     font-size: 1.5rem;
   }
 }
+
+/* Header dengan aksi Export/Import */
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.header-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.btn-header {
+  background-color: transparent;
+  border-color: rgba(255, 255, 255, 0.5);
+  color: var(--white);
+  padding: 0.4rem 0.9rem;
+  font-size: 0.85rem;
+}
+
+.btn-header:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  border-color: var(--white);
+}
+
+/* Nav tabs scrollable */
+.nav-tabs {
+  display: block;
+  padding: 0;
+}
+
+.nav-tabs-inner {
+  display: flex;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  overflow-x: auto;
+}
+
+/* Tombol kecil untuk aksi tabel */
+.btn-sm {
+  padding: 0.3rem 0.7rem;
+  font-size: 0.8rem;
+}
+
+/* Utilitas teks */
+.cell-strong {
+  font-weight: 600;
+}
+
+.muted-text {
+  color: var(--text-secondary);
+  font-size: 0.85em;
+  font-style: italic;
+}
+
+.hint-text {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+}
+
+/* Badge prioritas & status kritis */
+.badge {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.badge-rendah {
+  background-color: #e0f2fe;
+  color: #075985;
+}
+
+.badge-sedang {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.badge-tinggi {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.badge-kritis {
+  background-color: var(--navy);
+  color: var(--white);
+}
+
+.badge-nonkritis {
+  background-color: var(--light-gray);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+}
+
+.row-critical {
+  background-color: #f0f4ff;
+}
+
+.row-critical:hover {
+  background-color: #e4ebfa;
+}
+
+/* Chip alokasi resource & checkbox group */
+.chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.chip {
+  display: inline-block;
+  padding: 0.1rem 0.55rem;
+  border-radius: 999px;
+  background-color: var(--light-gray);
+  border: 1px solid var(--border-color);
+  font-size: 0.75rem;
+  color: var(--navy);
+  white-space: nowrap;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  margin-top: 0.4rem;
+}
+
+.checkbox-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.checkbox-item input {
+  accent-color: var(--navy);
+}
+
+/* Kartu ringkasan analisis jalur kritis */
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.summary-card {
+  background-color: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.summary-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.25rem;
+}
+
+.summary-value {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.path-summary {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+  padding: 0.75rem 1rem;
+  background-color: var(--light-gray);
+  border-left: 3px solid var(--navy);
+  border-radius: 4px;
+}
+
+.path-label {
+  font-weight: 600;
+  color: var(--navy);
+  font-size: 0.875rem;
+}
+
+.path-value {
+  font-size: 0.875rem;
+  color: var(--text-primary);
+}
+
+/* Bagan Gantt */
+.gantt-legend {
+  display: flex;
+  gap: 1.25rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.gantt-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.gantt-inner {
+  min-width: 100%;
+}
+
+.gantt-header {
+  display: flex;
+  background-color: var(--light-gray);
+  border-bottom: 2px solid var(--medium-gray);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.gantt-row {
+  display: flex;
+  border-bottom: 1px solid var(--medium-gray);
+}
+
+.gantt-row:last-child {
+  border-bottom: none;
+}
+
+.gantt-row:hover {
+  background-color: #f9fafb;
+}
+
+.gantt-label-cell {
+  flex: 0 0 220px;
+  width: 220px;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.85rem;
+  border-right: 1px solid var(--medium-gray);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.gantt-header .gantt-label-cell {
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.gantt-indent {
+  color: var(--dark-gray);
+}
+
+.gantt-timeline {
+  position: relative;
+  flex: 1 0 auto;
+  min-height: 38px;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--light-gray) 0,
+    var(--light-gray) 1px,
+    transparent 1px,
+    transparent 36px
+  );
+}
+
+.gantt-header .gantt-timeline {
+  min-height: 32px;
+}
+
+.gantt-header-tick {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  padding-left: 4px;
+  border-left: 1px solid var(--medium-gray);
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.gantt-bar {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 20px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 12px;
+}
+
+.gantt-bar-high {
+  background-color: #1e3a8a;
+}
+
+.gantt-bar-mid {
+  background-color: #3b62c4;
+}
+
+.gantt-bar-low {
+  background-color: #93a7d8;
+}
+
+.gantt-bar-label {
+  font-size: 0.65rem;
+  color: var(--white);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.gantt-bar-low .gantt-bar-label {
+  color: var(--navy);
+}

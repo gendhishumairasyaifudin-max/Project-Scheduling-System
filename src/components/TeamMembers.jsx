@@ -1,21 +1,23 @@
 import { useState } from 'react'
+import { formatRupiah, nextId } from '../utils/projectUtils'
 
-function TeamMembers() {
-  const [members, setMembers] = useState([])
-  const [formData, setFormData] = useState({
-    nama: '',
-    noHp: '',
-    email: '',
-    posisi: 'Programmer',
-    gaji: ''
-  })
+const EMPTY_FORM = {
+  nama: '',
+  noHp: '',
+  email: '',
+  posisi: 'Programmer',
+  gaji: ''
+}
+
+function TeamMembers({ members, setMembers }) {
+  const [formData, setFormData] = useState(EMPTY_FORM)
   const [editId, setEditId] = useState(null)
 
   const posisiOptions = ['PM', 'Analis', 'Programmer', 'Tester']
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       [name]: value
     }))
@@ -23,36 +25,31 @@ function TeamMembers() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    
+
     if (!formData.nama || !formData.noHp || !formData.email || !formData.gaji) {
       alert('Semua field harus diisi!')
       return
     }
 
-    const isEditMode = editId !== null && members.some(member => member.id === editId)
+    const isEditMode = editId !== null && members.some((member) => member.id === editId)
 
     if (isEditMode) {
-      setMembers(members.map(member => 
-        member.id === editId ? { ...formData, id: editId, gaji: Number(formData.gaji) } : member
-      ))
+      setMembers((prev) =>
+        prev.map((member) =>
+          member.id === editId ? { ...member, ...formData, gaji: Number(formData.gaji) } : member
+        )
+      )
       setEditId(null)
     } else {
       const newMember = {
         ...formData,
-        id: Date.now(),
+        id: nextId(),
         gaji: Number(formData.gaji)
       }
-      setMembers(prevMembers => [...prevMembers, newMember])
-      setEditId(null)
+      setMembers((prev) => [...prev, newMember])
     }
 
-    setFormData({
-      nama: '',
-      noHp: '',
-      email: '',
-      posisi: 'Programmer',
-      gaji: ''
-    })
+    setFormData(EMPTY_FORM)
   }
 
   const handleEdit = (member) => {
@@ -61,34 +58,20 @@ function TeamMembers() {
       noHp: member.noHp,
       email: member.email,
       posisi: member.posisi,
-      gaji: member.gaji.toString()
+      gaji: String(member.gaji)
     })
     setEditId(member.id)
   }
 
   const handleDelete = (id) => {
     if (window.confirm('Apakah Anda yakin ingin menghapus data anggota ini?')) {
-      setMembers(members.filter(member => member.id !== id))
+      setMembers((prev) => prev.filter((member) => member.id !== id))
     }
   }
 
   const handleCancel = () => {
     setEditId(null)
-    setFormData({
-      nama: '',
-      noHp: '',
-      email: '',
-      posisi: 'Programmer',
-      gaji: ''
-    })
-  }
-
-  const formatCurrency = (amount) => {
-    return new Intl.NumberFormat('id-ID', {
-      style: 'currency',
-      currency: 'IDR',
-      minimumFractionDigits: 0
-    }).format(amount)
+    setFormData(EMPTY_FORM)
   }
 
   return (
@@ -99,7 +82,9 @@ function TeamMembers() {
             {editId !== null ? 'Edit Data Anggota Tim' : 'Tambah Anggota Tim Baru'}
           </h2>
           <p className="section-description">
-            {editId !== null ? 'Perbarui informasi anggota tim' : 'Masukkan data anggota tim yang akan ditambahkan'}
+            {editId !== null
+              ? 'Perbarui informasi anggota tim'
+              : 'Masukkan data anggota tim yang akan ditambahkan'}
           </p>
         </div>
         <div className="section-body">
@@ -150,7 +135,7 @@ function TeamMembers() {
                   value={formData.posisi}
                   onChange={handleInputChange}
                 >
-                  {posisiOptions.map(posisi => (
+                  {posisiOptions.map((posisi) => (
                     <option key={posisi} value={posisi}>{posisi}</option>
                   ))}
                 </select>
@@ -215,19 +200,17 @@ function TeamMembers() {
                       <td>{member.noHp}</td>
                       <td>{member.email}</td>
                       <td>{member.posisi}</td>
-                      <td>{formatCurrency(member.gaji)}</td>
+                      <td>{formatRupiah(member.gaji)}</td>
                       <td>
                         <div className="action-buttons">
                           <button
-                            className="btn btn-secondary"
-                            style={{ padding: '0.375rem 0.75rem', fontSize: '0.8125rem' }}
+                            className="btn btn-secondary btn-sm"
                             onClick={() => handleEdit(member)}
                           >
                             Edit
                           </button>
                           <button
-                            className="btn btn-danger"
-                            style={{ padding: '0.375rem 0.75rem', fontSize: '0.8125rem' }}
+                            className="btn btn-danger btn-sm"
                             onClick={() => handleDelete(member.id)}
                           >
                             Hapus
